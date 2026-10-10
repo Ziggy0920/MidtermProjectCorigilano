@@ -41,6 +41,24 @@ public class Ticko2{
         lastMove = 0;
     }
 
+    // getPlayer1Stats - returns an array of two values, player 1's wins at [0], and the loses at [1]
+    // none -> int[]
+    public int[] getPlayer1Stats(){
+        int[] stats = new int[2];
+        stats[0] = player1Wins;
+        stats[1] = player1Loses;
+        return stats;
+    }
+
+    // getPlayer2Stats - returns an array of two values, player 2's wins at [0], and the loses at [1]
+    // none -> int[]
+    public int[] getPlayer2Stats(){
+        int[] stats = new int[2];
+        stats[0] = player2Wins;
+        stats[1] = player2Loses;
+        return stats;
+    }
+
     // getCellState - returns the char stored in the requested cell (0 - 8, left to right, top to bottom)
     // int -> char
     public char getCellState(int cell){
