@@ -47,8 +47,16 @@ public class Ticko2{
     //            coulf be due to an invalid input
     // int, int -> boolean
     public boolean playCell(int cell, int player){
-        // TODO: add validation for cell and player vars here, try to use exceptions with a try-catch
-        // TODO: inside the try block, add the cell change code block and delete temp false return
+        /*
+         * TODO: the lastMove var will be used here. get rid of this one line when done
+         * If player 1 played a cell correctly, then it will be set to the cell number (1-9).
+         * If player 2 played a cell correctly, then it will be set to the cell number (1-9) plus 9.
+         */
+
+        /*
+         * TODO: add validation for cell and player vars here, try to use exceptions with a try-catch
+         * TODO: inside the try block, add the cell change code block and delete temp false return
+         */
         return false; // temp false return
     }
 
