@@ -41,6 +41,21 @@ public class Ticko2{
         lastMove = 0;
     }
 
+    // checkEndGame - checks if the game is completed. If not, returns a 0. If so, it returns a 1 if player 1 won,
+    //                and a 2 if player 2 won
+    // none -> int
+    public int checkEndGame(){
+        if(/*board is done*/ false){ // FIXME: make this check if the board is complete, and delete the temp false
+            if(/*player 1 won*/ false){// FIXME: make this check if P1 won, and delete the temp false
+                return 1;
+            } else{
+                return 2;
+            }
+        } else{
+            return 0;
+        }
+    }
+
     // getPlayer1Stats - returns an array of two values, player 1's wins at [0], and the loses at [1]
     // none -> int[]
     public int[] getPlayer1Stats(){
