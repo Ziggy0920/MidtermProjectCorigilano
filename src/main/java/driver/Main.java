@@ -21,6 +21,5 @@ import static javax.swing.JOptionPane.showInputDialog;
 public class Main{
     static void main(String[] args){
         Ticko2 to2 = new Ticko2();
-
     }
 }

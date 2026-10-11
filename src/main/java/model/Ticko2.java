@@ -43,21 +43,24 @@ public class Ticko2{
 
     // playCell - takes a 1 or 2 (to know which player is making the move) and the cell
     //            position (0 - 8, left to right, top to bottom), and changes that part of the board accordingly,
-    //            then returns a boolean to say if the cell was successfully played or not. An invalid play
-    //            coulf be due to an invalid input
-    // int, int -> boolean
-    public boolean playCell(int cell, int player){
+    //            then throws an exception if the cell was an invalid play (due to an invalid input)
+    // int, int -> void
+    public void playCell(int cell, int player) throws IndexOutOfBoundsException{
         /*
          * TODO: the lastMove var will be used here. get rid of this one line when done
          * If player 1 played a cell correctly, then it will be set to the cell number (1-9).
          * If player 2 played a cell correctly, then it will be set to the cell number (1-9) plus 9.
          */
+        if(cell < 0 || cell > 8){ // checks if the int cell input is outside the range
+            throw new IndexOutOfBoundsException("Invalid cell"); // throws out of range exception
+        } else if(player != 1 && player != 2){ // checks if the player input is not 1 or 2
+            throw new IndexOutOfBoundsException("Invalid player"); // throws out of range exception
+        }
 
-        /*
-         * TODO: add validation for cell and player vars here, try to use exceptions with a try-catch
-         * TODO: inside the try block, add the cell change code block and delete temp false return
-         */
-        return false; // temp false return
+        player1Wins++;  // | temp player stat changes
+        player2Wins++;  // |
+        player1Loses--; // |
+        player2Loses--; // |
     }
 
     // checkEndGame - checks if the game is completed. If not, returns a 0. If so, it returns a 1 if player 1 won,
