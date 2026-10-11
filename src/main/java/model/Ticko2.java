@@ -46,7 +46,7 @@ public class Ticko2{
     //            position (0 - 8, left to right, top to bottom), and changes that part of the board accordingly,
     //            then throws an exception if the cell was an invalid play (due to an invalid input)
     // int, int -> void
-    public void playCell(int cell) throws IllegalStateException{
+    public void playCell(int cell) throws IndexOutOfBoundsException, IllegalStateException{
         if(cell < 0 || cell > 8) { // checks if the int cell input is outside the range
             throw new IndexOutOfBoundsException("Invalid cell"); // throws out of range exception
         }
