@@ -72,7 +72,19 @@ public class Ticko2{
         // Else, since valid play...
         // If either player played a cell correctly, then it will be set to the cell number (0-8).
         lastMove = cell;
-
+        if(player == 1){
+            if(board[cell] == ' '){
+                board[cell] = '|';
+            } else if(board[cell] == '-'){
+                board[cell] = '+';
+            }
+        } else{
+            if(board[cell] == ' '){
+                board[cell] = '-';
+            } else if(board[cell] == '|'){
+                board[cell] = '+';
+            }
+        }
     }
 
     // checkEndGame - checks if the game is completed. If not, returns a 0. If so, it returns a 1 if player 1 won,
