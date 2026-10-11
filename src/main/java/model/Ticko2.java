@@ -91,14 +91,47 @@ public class Ticko2{
     //                and a 2 if player 2 won
     // none -> int
     public int checkEndGame(){
-        if(/*board is done*/ false){// FIXME: make this check if the board is complete, delete the temp condition
-            if(/*player 1 won*/ false){// FIXME: make this check if P1 won, and delete the temp false condition
-                return 1;
+        boolean isEndgame;
+        boolean didPlayer1Win;
+        final int THREE_PLUS_AS_INT_VAL = (int)'+' + (int)'+' + (int)'+';
+
+        // checks if any full row, column, or diagonal is complete
+        // turns the chars of the checked cells into ints, adds them up, and checks if it equals the value of three '+' chars
+        if((int)board[0] + (int)board[1] + (int)board[2] == THREE_PLUS_AS_INT_VAL){ // checks the top row
+            isEndgame = true;
+        } else if((int)board[3] + (int)board[4] + (int)board[5] == THREE_PLUS_AS_INT_VAL){ // checks the middle row
+            isEndgame = true;
+        } else if((int)board[6] + (int)board[7] + (int)board[8] == THREE_PLUS_AS_INT_VAL){ // checks the bottom row
+            isEndgame = true;
+        } else if((int)board[0] + (int)board[3] + (int)board[6] == THREE_PLUS_AS_INT_VAL){ // checks the left column
+            isEndgame = true;
+        } else if((int)board[1] + (int)board[4] + (int)board[7] == THREE_PLUS_AS_INT_VAL){ // checks the middle column
+            isEndgame = true;
+        } else if((int)board[2] + (int)board[5] + (int)board[8] == THREE_PLUS_AS_INT_VAL){ // checks the right column
+            isEndgame = true;
+        } else if((int)board[0] + (int)board[4] + (int)board[8] == THREE_PLUS_AS_INT_VAL){ // checks the forward diagonal
+            isEndgame = true;
+        } else if((int)board[2] + (int)board[4] + (int)board[6] == THREE_PLUS_AS_INT_VAL){ // checks the backward diagonal
+            isEndgame = true;
+        } else{
+            isEndgame = false;
+        }
+
+        if(isEndgame){ // If the game is over
+            // checks who played the last turn (opposite of current turn), last player to play before an endgame wins
+            if(playerTurn == 1){
+                didPlayer1Win = false;
             } else{
+                didPlayer1Win = true;
+            }
+
+            if(didPlayer1Win){// If player 1 won
+                return 1;
+            } else{ // If player 2 won
                 return 2;
             }
         } else{
-            return 0;
+            return 0; // nobody won (no endgame)
         }
     }
 
