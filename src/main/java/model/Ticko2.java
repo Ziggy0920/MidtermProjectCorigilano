@@ -174,6 +174,21 @@ public class Ticko2{
     // toString - overrides the toString method and returns the board as a customized format multi-line String
     // none -> String
     public String toString(){
-        return "board\narray\nhere"; // TODO: make this return the board as shown on the pre-approval doc
+        String boardDisplay = "";
+        boardDisplay += "=============\n";
+        boardDisplay += "|   |   |   |\n";
+        boardDisplay += "| " + board[0] + " | " + board[1] + " | " + board[2] + " |\n";
+        boardDisplay += "|   |   |   |\n";
+        boardDisplay += "|===|===|===|\n";
+        boardDisplay += "|   |   |   |\n";
+        boardDisplay += "| " + board[3] + " | " + board[4] + " | " + board[5] + " |\n";
+        boardDisplay += "|   |   |   |\n";
+        boardDisplay += "|===|===|===|\n";
+        boardDisplay += "|   |   |   |\n";
+        boardDisplay += "| " + board[6] + " | " + board[7] + " | " + board[8] + " |\n";
+        boardDisplay += "|   |   |   |\n";
+        boardDisplay += "=============\n";
+
+        return boardDisplay;
     }
 }
