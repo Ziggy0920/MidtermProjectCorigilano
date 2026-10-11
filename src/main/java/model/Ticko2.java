@@ -188,6 +188,7 @@ public class Ticko2{
         boardDisplay += "| " + board[6] + " | " + board[7] + " | " + board[8] + " |\n";
         boardDisplay += "|   |   |   |\n";
         boardDisplay += "=============\n";
+        boardDisplay += "Current turn: Player " + playerTurn + "\n";
 
         return boardDisplay;
     }
