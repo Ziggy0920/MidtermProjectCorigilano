@@ -7,7 +7,7 @@ class Ticko2Test{
 
     @org.junit.jupiter.api.Test
     void testGetCellState(){
-        to2.newGame(); // resets board
+        to2.newGame(); // resets the Ticko2 object
         to2.playCell(0); // cell 0 (top left) turns to '|'
         to2.playCell(1); // cell 1 (top middle) turns to '-'
         to2.playCell(2); // cell 2 (top right) turns to '|'
@@ -19,12 +19,25 @@ class Ticko2Test{
 
     @org.junit.jupiter.api.Test
     void testGetPlayerTurn(){
-
+        to2.newGame(); // resets board
+        assertEquals(1, to2.getPlayerTurn());
+        to2.playCell(0);
+        assertEquals(2, to2.getPlayerTurn());
+        to2.playCell(1);
+        assertEquals(1, to2.getPlayerTurn());
+        to2.playCell(2);
+        assertEquals(2, to2.getPlayerTurn());
+        to2.playCell(0);
+        assertEquals(1, to2.getPlayerTurn());
+        to2.playCell(1);
+        assertEquals(2, to2.getPlayerTurn());
+        to2.playCell(2);
+        assertEquals(1, to2.getPlayerTurn());
     }
 
     @org.junit.jupiter.api.Test
     void testCheckEndGame(){
-        to2.newGame(); // resets the Ticko2 object
+        to2.newGame(); // resets board
         to2.playCell(4); // player 1 plays the middle cell
         assertEquals(0, to2.checkEndGame()); // no row, column, or diagonal is completed, so no endgame
         to2.playCell(0); // player 2 plays the top left cell
