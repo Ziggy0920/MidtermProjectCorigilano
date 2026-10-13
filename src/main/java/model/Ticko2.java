@@ -13,13 +13,13 @@
 package model;
 
 public class Ticko2{
-    char[] board;
-    int player1Wins;
-    int player2Wins;
-    int player1Loses;
-    int player2Loses;
-    int lastMove;
-    int playerTurn;
+    private char[] board;
+    private int player1Wins;
+    private int player2Wins;
+    private int player1Loses;
+    private int player2Loses;
+    private int lastMove;
+    private int playerTurn;
 
     // Ticko2 - default constructor, sets everything to their default values
     // none -> Object

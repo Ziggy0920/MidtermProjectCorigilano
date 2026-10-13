@@ -73,6 +73,12 @@ public class Main{
             }
 
             // game loop
+            if(isPlaying){
+                to2.newGame();
+            }
+            while(isPlaying){
+
+            }
         }
     }
 
