@@ -20,6 +20,12 @@ import static javax.swing.JOptionPane.showInputDialog;
 
 public class Main{
     static void main(String[] args){
+        boolean isPlaying = false;
+        boolean isRunning = true;
+        String action;
+        boolean isValidInput;
+
         Ticko2 to2 = new Ticko2();
+        JOptionPane.showMessageDialog(null, "Welcome to Ticko2! (Tic-Oat-Two)\nThe sequel to Tic-Tac-Toe");
     }
 }
