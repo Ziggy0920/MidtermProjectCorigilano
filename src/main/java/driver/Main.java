@@ -97,15 +97,24 @@ public class Main{
                         } catch(IllegalStateException e){
                             showMessageDialog(null, e.getMessage());
                         } catch(Exception e){
-                            showMessageDialog(null, "Enter a valid value");
+                            showMessageDialog(null, "Enter a valid integer");
                         }
                     }
 
                     // checks endgame
-                    if(to2.checkEndGame() == 1){
-
-                    } else if (to2.checkEndGame() == 2){
-
+                    isPlaying = false;
+                    switch(to2.checkEndGame()){
+                        case 1:
+                            showMessageDialog(null, to2.getBoard() +
+                                    "\n" + player1Name + " has won the game!");
+                            break;
+                        case 2:
+                            showMessageDialog(null, to2.getBoard() +
+                                    "\n" + player2Name + " has won the game!");
+                            break;
+                        default:
+                            isPlaying = true;
+                            break;
                     }
                 }
             }
