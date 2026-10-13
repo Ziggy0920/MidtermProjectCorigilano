@@ -20,6 +20,8 @@ import static javax.swing.JOptionPane.showMessageDialog;
 // IMPORTANT: REMEMBER TO USE MODULE 4 TO RE-LEARN JOptionPane
 
 public class Main{
+    public static final int MAX_USERNAME_LENGTH = 12;
+
     static void main(String[] args){
         boolean isPlaying = false;
         boolean isRunning = true;
@@ -62,7 +64,7 @@ public class Main{
                     break;
                 // if action is 2, show the player stats then return to action selection
                 case "2":
-                    displayStats(to2);
+                    displayStats(to2, player1Name, player2Name);
                     break;
                 // if action is 3, stop the main loop
                 case "3":
@@ -93,12 +95,15 @@ public class Main{
                 username = showInputDialog("Enter a username for " + title + ":");
                 if(username.isEmpty() || username.isBlank()){ // checks for a valid name (not null)
                     throw new Exception("Username is empty");
+                } else if(username.length() > MAX_USERNAME_LENGTH){
+                    throw new Exception("Username is too long");
                 } else{
                     isValidUsername = true;
                     showMessageDialog(null, "You have entered: " + username + "\nfor " + title);
                 }
             } catch(Exception e){
-                showMessageDialog(null, e.getMessage() + "\nPlease enter a username for " + title);
+                showMessageDialog(null, e.getMessage() +
+                        "\nPlease enter a valid username for " + title);
             }
         }
         return username;
@@ -106,7 +111,26 @@ public class Main{
 
     // displayStats - will use a message dialog window to show the players' wins and loses, using a manually-built String
     // Ticko2 (Object) -> void
-    public static void displayStats(Ticko2 t){
+    public static void displayStats(Ticko2 t, String player1Username, String player2Username){
+        String stats = "";
         // shows the player stats using a built String in a normal message dialog window
+        stats += player1Username; // build player 1 stat block
+        for(int i = 0; i <= (MAX_USERNAME_LENGTH - player1Username.length()); i++){
+            stats += " ";
+        }
+        stats += "| Wins:Loses >> " + t.getPlayer1Stats()[0] + ":" + t.getPlayer1Stats()[1] + "\n";
+
+        for(int i = 0; i < MAX_USERNAME_LENGTH; i++){
+            stats += "=";
+        }
+        stats += "========================\n";
+
+        stats += player1Username; // build player 2 stat block
+        for(int i = 0; i <= (MAX_USERNAME_LENGTH - player1Username.length()); i++){
+            stats += " ";
+        }
+        stats += "| Wins:Loses >> " + t.getPlayer1Stats()[0] + ":" + t.getPlayer1Stats()[1];
+
+        showMessageDialog(null, stats);
     }
 }
