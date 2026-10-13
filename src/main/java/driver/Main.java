@@ -29,6 +29,7 @@ public class Main{
         boolean isValidInput;
         String player1Name;
         String player2Name;
+        String cellChoice;
         Ticko2 to2 = new Ticko2();
 
         showMessageDialog(null, "Welcome to Ticko2! (Tic-Oat-Two)\nThe sequel to Tic-Tac-Toe");
@@ -69,7 +70,8 @@ public class Main{
                     break;
                 // if action is 3, show instructions on how to play
                 case "3":
-                    displayGameRules();
+                    displayGameRules(player1Name, player2Name);
+                    break;
                 // if action is 4, stop the main loop
                 case "4":
                     isRunning = false;
@@ -82,8 +84,28 @@ public class Main{
             if(isPlaying){
                 to2.newGame();
                 while(isPlaying){
-                    try{
-                        to2.playCell();
+                    isValidInput = false;
+                    while(!isValidInput){ // forces valid input
+                        try{
+                            cellChoice = showInputDialog("Enter any number 1 through 9 to place a line.\n" +
+                                    "In increasing order, the cells are numbered from left to right, and top to bottom.\n" +
+                                    to2.getBoard());
+                            to2.playCell(Integer.parseInt(cellChoice) - 1);
+                            isValidInput = true;
+                        } catch(IndexOutOfBoundsException e){
+                            showMessageDialog(null, e.getMessage());
+                        } catch(IllegalStateException e){
+                            showMessageDialog(null, e.getMessage());
+                        } catch(Exception e){
+                            showMessageDialog(null, "Enter a valid value");
+                        }
+                    }
+
+                    // checks endgame
+                    if(to2.checkEndGame() == 1){
+
+                    } else if (to2.checkEndGame() == 2){
+
                     }
                 }
             }
@@ -117,8 +139,18 @@ public class Main{
 
     // displayGameRules - tells the players how to play using message dialog windows
     // none -> void
-    public static void displayGameRules(){
-
+    public static void displayGameRules(String player1Username, String player2Username){
+        showMessageDialog(null, "How to play Ticko2:\n" +
+                "The board is a 3-by-3 grid.\n" +
+                "Instead of X's and O's, " + player1Username + " will use vertical lines,\n" +
+                "and " + player2Username + " will use horizontal lines.\n" +
+                "You may place your lines on top of the other player's line,\n" +
+                "creating a \"completed\" cell on the grid. (+)\n" +
+                "However, you may not place a line on a cell played on\n" +
+                "by the other player in the previous round.\n" +
+                "To reach the endgame, any 3 consecutive cells must be completed.\n" +
+                "The winner is decided by the player to place a line on the\n" +
+                "last needed cell, completing it.");
     }
 
     // displayStats - will use a message dialog window to show the players' wins and loses, using a manually-built String

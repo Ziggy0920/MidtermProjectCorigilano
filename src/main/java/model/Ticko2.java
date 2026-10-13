@@ -48,7 +48,7 @@ public class Ticko2{
     // int, int -> void
     public void playCell(int cell) throws IndexOutOfBoundsException, IllegalStateException{
         if(cell < 0 || cell > 8) { // checks if the int cell input is outside the range
-            throw new IndexOutOfBoundsException("Invalid cell"); // throws out of range exception
+            throw new IndexOutOfBoundsException("Invalid cell, please enter a valid cell number"); // throws out of range exception
         }
 
         // If the inputs are valid...
