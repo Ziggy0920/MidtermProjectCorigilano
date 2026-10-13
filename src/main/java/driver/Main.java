@@ -43,12 +43,16 @@ public class Main{
         }
     }
 
+    // getUsernames - uses input dialog windows to get each players' usernames
+    // none -> String[2]
     public static String[] getUsernames(){
         String[] usernames = new String[2];
         // gets usernames through input dialogs
         return usernames;
     }
 
+    // displayStats - will use a message dialog window to show the players' wins and loses, using a manually-built String
+    // Ticko2 (object) -> void
     public static void displayStats(Ticko2 t){
         // shows the player stats using a built String in a normal message dialog window
     }
