@@ -24,8 +24,32 @@ public class Main{
         boolean isRunning = true;
         String action;
         boolean isValidInput;
-
+        String player1Name;
+        String player2Name;
         Ticko2 to2 = new Ticko2();
+
         JOptionPane.showMessageDialog(null, "Welcome to Ticko2! (Tic-Oat-Two)\nThe sequel to Tic-Tac-Toe");
+        while(isRunning){ // main loop
+            // get usernames
+
+            // start asking for actions
+            // check if action is valid, if not then ask again
+
+            // if action is 1, start a game in the game loop
+            // if action is 2, show the player stats then return to action selection
+            // if action is 3, stop the main loop
+
+            // game loop
+        }
+    }
+
+    public static String[] getUsernames(){
+        String[] usernames = new String[2];
+        // gets usernames through input dialogs
+        return usernames;
+    }
+
+    public static void displayStats(Ticko2 t){
+        // shows the player stats using a built String in a normal message dialog window
     }
 }
