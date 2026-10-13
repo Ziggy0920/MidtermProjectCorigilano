@@ -125,11 +125,11 @@ public class Main{
         }
         stats += "========================\n";
 
-        stats += player1Username; // build player 2 stat block
-        for(int i = 0; i <= (MAX_USERNAME_LENGTH - player1Username.length()); i++){
+        stats += player2Username; // build player 2 stat block
+        for(int i = 0; i <= (MAX_USERNAME_LENGTH - player2Username.length()); i++){
             stats += " ";
         }
-        stats += "| Wins:Loses >> " + t.getPlayer1Stats()[0] + ":" + t.getPlayer1Stats()[1];
+        stats += "| Wins:Loses >> " + t.getPlayer2Stats()[0] + ":" + t.getPlayer2Stats()[1];
 
         showMessageDialog(null, stats);
     }
