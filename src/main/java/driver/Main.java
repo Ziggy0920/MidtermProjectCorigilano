@@ -93,7 +93,7 @@ public class Main{
         while (!isValidUsername){
             try {
                 username = showInputDialog("Enter a username for " + title + ":");
-                if(username.isEmpty() || username.isBlank()){ // checks for a valid name (not null)
+                if(username == null || username.isEmpty() || username.isBlank()){ // checks for a valid name (not null)
                     throw new Exception("Username is empty");
                 } else if(username.length() > MAX_USERNAME_LENGTH){
                     throw new Exception("Username is too long");
