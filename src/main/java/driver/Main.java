@@ -8,15 +8,15 @@
  * Academic Honesty: I attest that this is my original work.
  * I have not used unauthorized source code, either modified or unmodified
  * Documentation of Resources Used:
- *      JOptionPane font imports and implementation: https://stackoverflow.com/questions/17059575/how-to-change-the-font-in-joptionpane-showinputdialog-jtextfield
+ *      1) JOptionPane font imports and implementation: https://stackoverflow.com/questions/17059575/how-to-change-the-font-in-joptionpane-showinputdialog-jtextfield
  */
 
 package driver;
 
 import model.Ticko2;
 
-import javax.swing.UIManager;
-import java.awt.Font;
+import javax.swing.UIManager; // import from research (1)
+import java.awt.Font; // import from research (1)
 import static javax.swing.JOptionPane.showInputDialog;
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -103,7 +103,7 @@ public class Main{
                                         "It is " + player2Name + "'s turn\n" +
                                         "Enter a 0 to exit the game");
                             }
-                            if(Integer.parseInt(cellChoice) - 1 == 0){
+                            if(Integer.parseInt(cellChoice) == 0){
                                 showMessageDialog(null, "Game exited, no stats changed");
                                 isPlaying = false;
                                 break;
