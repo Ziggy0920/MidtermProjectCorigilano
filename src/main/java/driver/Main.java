@@ -33,11 +33,10 @@ public class Main{
         Ticko2 to2 = new Ticko2();
 
         showMessageDialog(null, "Welcome to Ticko2! (Tic-Oat-Two)\nThe sequel to Tic-Tac-Toe");
+        // get usernames
+        player1Name = getUsername("Player 1");
+        player2Name = getUsername("Player 2");
         while(isRunning){ // main loop
-            // get usernames
-            player1Name = getUsername("Player 1");
-            player2Name = getUsername("Player 2");
-
             // start asking for actions
             isValidInput = false;
             action = "";
