@@ -29,14 +29,30 @@ public class Main{
         String player2Name;
         Ticko2 to2 = new Ticko2();
 
-        JOptionPane.showMessageDialog(null, "Welcome to Ticko2! (Tic-Oat-Two)\nThe sequel to Tic-Tac-Toe");
+        showMessageDialog(null, "Welcome to Ticko2! (Tic-Oat-Two)\nThe sequel to Tic-Tac-Toe");
         while(isRunning){ // main loop
             // get usernames
             player1Name = getUsername("Player 1");
             player2Name = getUsername("Player 2");
 
             // start asking for actions
-            // check if action is valid, if not then ask again
+            isValidInput = false;
+            while(!isValidInput){
+                // check if action is valid, if not then ask again
+                try{
+                    action = showInputDialog(null, "Select an action by entering it's number:\n" +
+                            "1: Play game\n" +
+                            "2: View player stats\n" +
+                            "3: Quit program");
+                    if(action.equals("1") ||  action.equals("2") || action.equals("3")){
+                        isValidInput = true;
+                    } else{
+                        throw new Exception("Invalid: input must be a \"1\", \"2\", or \"3\"");
+                    }
+                } catch(Exception e){
+                    showMessageDialog(null, e.getMessage());
+                }
+            }
 
             // if action is 1, start a game in the game loop
             // if action is 2, show the player stats then return to action selection
@@ -59,11 +75,10 @@ public class Main{
                     throw new Exception("Username is empty");
                 } else{
                     isValidUsername = true;
-                    JOptionPane.showMessageDialog(null, "You have entered: " + username + "\nfor " + title);
+                    showMessageDialog(null, "You have entered: " + username + "\nfor " + title);
                 }
             } catch(Exception e){
-                JOptionPane.showMessageDialog(null, e.getMessage() + "\nPlease enter a username for " + title);
-                isValidUsername = false;
+                showMessageDialog(null, e.getMessage() + "\nPlease enter a username for " + title);
             }
         }
         return username;
