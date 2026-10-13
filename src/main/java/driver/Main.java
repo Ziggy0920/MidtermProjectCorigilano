@@ -46,11 +46,12 @@ public class Main{
                     action = showInputDialog(null, "Select an action by entering it's number:\n" +
                             "1: Play game\n" +
                             "2: View player stats\n" +
-                            "3: Quit program");
-                    if(action.equals("1") ||  action.equals("2") || action.equals("3")){
+                            "3: How to play\n" +
+                            "4: Quit program");
+                    if(action.equals("1") ||  action.equals("2") || action.equals("3") || action.equals("4")){
                         isValidInput = true;
                     } else{
-                        throw new Exception("Invalid: input must be a \"1\", \"2\", or \"3\"");
+                        throw new Exception("Invalid: input must be a \"1\", \"2\", \"3\", or \"4\"");
                     }
                 } catch(Exception e){
                     showMessageDialog(null, e.getMessage());
@@ -66,8 +67,11 @@ public class Main{
                 case "2":
                     displayStats(to2, player1Name, player2Name);
                     break;
-                // if action is 3, stop the main loop
+                // if action is 3, show instructions on how to play
                 case "3":
+                    displayGameRules();
+                // if action is 4, stop the main loop
+                case "4":
                     isRunning = false;
                     break;
                 default:
@@ -77,9 +81,11 @@ public class Main{
             // game loop
             if(isPlaying){
                 to2.newGame();
-            }
-            while(isPlaying){
-
+                while(isPlaying){
+                    try{
+                        to2.playCell();
+                    }
+                }
             }
         }
     }
@@ -107,6 +113,12 @@ public class Main{
             }
         }
         return username;
+    }
+
+    // displayGameRules - tells the players how to play using message dialog windows
+    // none -> void
+    public static void displayGameRules(){
+
     }
 
     // displayStats - will use a message dialog window to show the players' wins and loses, using a manually-built String
