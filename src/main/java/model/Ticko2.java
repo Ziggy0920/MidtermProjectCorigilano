@@ -126,8 +126,12 @@ public class Ticko2{
             }
 
             if(didPlayer1Win){// If player 1 won
+                player1Wins++;
+                player2Loses++;
                 return 1;
             } else{ // If player 2 won
+                player2Wins++;
+                player1Loses++;
                 return 2;
             }
         } else{
