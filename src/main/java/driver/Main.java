@@ -86,9 +86,17 @@ public class Main{
                     isValidInput = false;
                     while(!isValidInput){ // forces valid input
                         try{
-                            cellChoice = showInputDialog("Enter any number 1 through 9 to place a line.\n" +
-                                    "In increasing order, the cells are numbered from left to right, and top to bottom.\n" +
-                                    to2.getBoard());
+                            if(to2.getPlayerTurn() == 1){
+                                cellChoice = showInputDialog("Enter any number 1 through 9 to place a line.\n" +
+                                        "In increasing order, the cells are numbered from left to right, and top to bottom.\n" +
+                                        to2.getBoard() +
+                                        "It is " + player1Name + "'s turn");
+                            } else{
+                                cellChoice = showInputDialog("Enter any number 1 through 9 to place a line.\n" +
+                                        "In increasing order, the cells are numbered from left to right, and top to bottom.\n" +
+                                        to2.getBoard() +
+                                        "It is " + player2Name + "'s turn");
+                            }
                             to2.playCell(Integer.parseInt(cellChoice) - 1);
                             isValidInput = true;
                         } catch(IndexOutOfBoundsException e){
