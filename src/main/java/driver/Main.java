@@ -15,6 +15,7 @@ package driver;
 import model.Ticko2;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showInputDialog;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 // IMPORTANT: REMEMBER TO USE MODULE 4 TO RE-LEARN JOptionPane
 
@@ -31,6 +32,8 @@ public class Main{
         JOptionPane.showMessageDialog(null, "Welcome to Ticko2! (Tic-Oat-Two)\nThe sequel to Tic-Tac-Toe");
         while(isRunning){ // main loop
             // get usernames
+            player1Name = getUsername("Player 1");
+            player2Name = getUsername("Player 2");
 
             // start asking for actions
             // check if action is valid, if not then ask again
@@ -43,16 +46,31 @@ public class Main{
         }
     }
 
-    // getUsernames - uses input dialog windows to get each players' usernames
-    // none -> String[2]
-    public static String[] getUsernames(){
-        String[] usernames = new String[2];
-        // gets usernames through input dialogs
-        return usernames;
+    // getUsername - uses input dialog windows to get a username
+    // none -> String
+    public static String getUsername(String title) {
+        String username = "";
+        boolean isValidUsername = false;
+        // gets username through input dialogs
+        while (!isValidUsername){
+            try {
+                username = showInputDialog("Enter a username for " + title + ":");
+                if(username.isEmpty() || username.isBlank()){ // checks for a valid name (not null)
+                    throw new Exception("Username is empty");
+                } else{
+                    isValidUsername = true;
+                    JOptionPane.showMessageDialog(null, "You have entered: " + username + "\nfor " + title);
+                }
+            } catch(Exception e){
+                JOptionPane.showMessageDialog(null, e.getMessage() + "\nPlease enter a username for " + title);
+                isValidUsername = false;
+            }
+        }
+        return username;
     }
 
     // displayStats - will use a message dialog window to show the players' wins and loses, using a manually-built String
-    // Ticko2 (object) -> void
+    // Ticko2 (Object) -> void
     public static void displayStats(Ticko2 t){
         // shows the player stats using a built String in a normal message dialog window
     }
