@@ -37,6 +37,7 @@ public class Main{
 
             // start asking for actions
             isValidInput = false;
+            action = "";
             while(!isValidInput){
                 // check if action is valid, if not then ask again
                 try{
@@ -54,9 +55,22 @@ public class Main{
                 }
             }
 
-            // if action is 1, start a game in the game loop
-            // if action is 2, show the player stats then return to action selection
-            // if action is 3, stop the main loop
+            switch(action){
+                // if action is 1, start a game in the game loop
+                case "1":
+                    isPlaying = true;
+                    break;
+                // if action is 2, show the player stats then return to action selection
+                case "2":
+                    displayStats(to2);
+                    break;
+                // if action is 3, stop the main loop
+                case "3":
+                    isRunning = false;
+                    break;
+                default:
+                    isRunning = false;
+            }
 
             // game loop
         }
