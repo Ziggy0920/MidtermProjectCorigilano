@@ -7,17 +7,18 @@
  * Program Description(short): Using Java GUI, you can play a text-based Ticko 2 (Tic-Oat-Two) with 2 players
  * Academic Honesty: I attest that this is my original work.
  * I have not used unauthorized source code, either modified or unmodified
- * Documentation of Resources Used:  (AI, websites, YouTube, peers, etc)
+ * Documentation of Resources Used:
+ *      JOptionPane font imports and implementation: https://stackoverflow.com/questions/17059575/how-to-change-the-font-in-joptionpane-showinputdialog-jtextfield
  */
 
 package driver;
 
 import model.Ticko2;
-import javax.swing.JOptionPane;
+
+import javax.swing.UIManager;
+import java.awt.Font;
 import static javax.swing.JOptionPane.showInputDialog;
 import static javax.swing.JOptionPane.showMessageDialog;
-
-// IMPORTANT: REMEMBER TO USE MODULE 4 TO RE-LEARN JOptionPane
 
 public class Main{
     public static final int MAX_USERNAME_LENGTH = 12;
@@ -31,6 +32,9 @@ public class Main{
         String player2Name;
         String cellChoice;
         Ticko2 to2 = new Ticko2();
+
+        Font monoFont = new Font("Monospaced", Font.BOLD, 14);
+        UIManager.put("OptionPane.messageFont", monoFont);
 
         showMessageDialog(null, "Welcome to Ticko2! (Tic-Oat-Two)\nThe sequel to Tic-Tac-Toe");
         // get usernames
@@ -90,12 +94,19 @@ public class Main{
                                 cellChoice = showInputDialog("Enter any number 1 through 9 to place a line.\n" +
                                         "In increasing order, the cells are numbered from left to right, and top to bottom.\n" +
                                         to2.getBoard() +
-                                        "It is " + player1Name + "'s turn");
+                                        "It is " + player1Name + "'s turn\n" +
+                                        "Enter a 0 to exit the game");
                             } else{
                                 cellChoice = showInputDialog("Enter any number 1 through 9 to place a line.\n" +
                                         "In increasing order, the cells are numbered from left to right, and top to bottom.\n" +
                                         to2.getBoard() +
-                                        "It is " + player2Name + "'s turn");
+                                        "It is " + player2Name + "'s turn\n" +
+                                        "Enter a 0 to exit the game");
+                            }
+                            if(Integer.parseInt(cellChoice) - 1 == 0){
+                                showMessageDialog(null, "Game exited, no stats changed");
+                                isPlaying = false;
+                                break;
                             }
                             to2.playCell(Integer.parseInt(cellChoice) - 1);
                             isValidInput = true;
