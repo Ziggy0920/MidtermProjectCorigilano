@@ -26,6 +26,7 @@ public class Main{
     static void main(String[] args){
         boolean isPlaying = false;
         boolean isRunning = true;
+        boolean choseEarlyQuit = false;
         String action;
         boolean isValidInput;
         String player1Name;
@@ -89,6 +90,7 @@ public class Main{
                 while(isPlaying){
                     isValidInput = false;
                     while(!isValidInput){ // forces valid input
+                        choseEarlyQuit = false;
                         try{
                             if(to2.getPlayerTurn() == 1){
                                 cellChoice = showInputDialog("Enter any number 1 through 9 to place a line.\n" +
@@ -105,10 +107,10 @@ public class Main{
                             }
                             if(Integer.parseInt(cellChoice) == 0){
                                 showMessageDialog(null, "Game exited, no stats changed");
-                                isPlaying = false;
-                                break;
+                                choseEarlyQuit = true;
+                            } else{
+                                to2.playCell(Integer.parseInt(cellChoice) - 1);
                             }
-                            to2.playCell(Integer.parseInt(cellChoice) - 1);
                             isValidInput = true;
                         } catch(IndexOutOfBoundsException e){
                             showMessageDialog(null, e.getMessage());
@@ -120,19 +122,25 @@ public class Main{
                     }
 
                     // checks endgame
-                    isPlaying = false;
                     switch(to2.checkEndGame()){
                         case 1:
                             showMessageDialog(null, to2.getBoard() +
                                     "\n" + player1Name + " has won the game!");
+                            isPlaying = false;
                             break;
                         case 2:
                             showMessageDialog(null, to2.getBoard() +
                                     "\n" + player2Name + " has won the game!");
+                            isPlaying = false;
                             break;
                         default:
                             isPlaying = true;
                             break;
+                    }
+
+                    // checks early quit
+                    if(choseEarlyQuit){
+                        isPlaying = false;
                     }
                 }
             }
